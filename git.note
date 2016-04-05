@@ -1,0 +1,97 @@
+/*******************************************************
+ * Author : JiangHe
+ * Create time   : 2016-04-05 17:15:00
+ * Last modified : 2016-04-05 20:33:18
+ * Description   : 
+*********************************************************/
+Versions:
+HEAD
+HEAD^
+HEAD^^
+...
+HEAD~100
+
+Commands:
+git init 
+git add <file>
+git commit [-m comments]
+git status
+git diff <file>
+git diff HEAD -- <file>
+git remote -v
+
+提交历史
+git log [--pretty=oneline | --abbrev-commit | --graph]
+git reflog
+
+版本回退
+git reset --hard HEAD^
+git reset --hard <commit-id>
+
+撤销修改
+git checkout -- <file>
+git reset HEAD <file>
+
+删除文件
+git add <file>
+git commit
+rm <file>
+git rm <file>
+git checkout -- <file>
+
+创建SSH Key
+ssh-keygen
+
+添加远程库
+git remote add origin git@github.com:H-j721/learngit.git
+git push -u origin master
+git push origin master
+
+从远程库克隆
+git clone git@github.com:H-j721/gitskills.git
+
+查看分支 git branch
+创建分支 git branch <name>
+切换分支 git checkout <name>
+创建+切换分支 git checkout -b <name>
+合并某分支到当前分支 git merge <name>
+删除分支 git branch -d <name>
+强制删除 git branch -D <name>
+
+默认Fast forward模式,删除分支后,会丢掉分支信息
+git merge dev
+普通模式,合并后的历史有分支
+git merge --no-ff -m "comments" dev
+
+“储藏”当前工作现场
+git stash
+git stash list
+
+恢复
+git stash apply; git stash drop 
+git stash pop
+
+推送分支
+git push origin branch-name
+抓取分支
+git pull
+本地创建和远程分支对应的分支
+git checkout -b branch-name origin/branch-name
+建立本地分支和远程分支的关联
+git branch --set-upstream branch-name origin/branch-name
+
+创建标签
+git  tag <tagname> [commit-id|(HEAD)]
+git tag -a <tagname> -m "comments"
+查看标签
+git tag
+git show <tagname>
+
+操作标签
+git tag -d <tagname>
+git push origin <tagname>
+git push origin -- tags
+git push origin :refs/tags/<tagname>
+
+git config --global alias.st status
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
