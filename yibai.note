@@ -1,0 +1,98 @@
+/*******************************************************
+ * Author : JiangHe
+ * Create time   : 2016-04-05 20:46:09
+ * Last modified : 2016-04-05 21:41:27
+ * Description   : From www.yibai.com
+*********************************************************/
+
+分布式版本控制系统（DVCS）
+
+
+从远程主机克隆一个版本库
+$ git clone <版本库的网址> (本地目录与远程库同名)
+$ git clone <版本库的网址> <本地目录名>
+
+
+克隆版本库的时候，所使用的远程主机自动被Git命名为origin
+如果想用其他的主机名，需要用git clone命令的-o选项指定
+
+$ git clone -o jQuery https://github.com/jquery/jquery.git
+
+
+列出所有远程主机
+$ git remote [-v]
+
+查看远程主机详细信息
+$ git remote show <主机名>
+
+添加远程主机
+$ git remote add <主机名> <网址>
+
+删除远程主机
+$ git remote rm <主机名>
+ 
+远程主机的改名
+$ git remote rename <原主机名> <新主机名>
+
+
+
+远程主机的版本库有了更新(commit) 需要将更新取回本地
+$ git fetch <远程主机名>
+
+如果只想取回特定分支的更新 可以指定分支名
+$ git fetch <远程主机名> <分支名>
+
+
+
+取回远程主机某个分支的更新，再与本地的指定分支合并
+$ git pull <远程主机名> <远程分支名>:<本地分支名>
+
+比如取回origin主机的next分支，与本地的master分支合并
+$ git pull origin next:master
+
+如果远程分支是与当前分支合并，则冒号后面的部分可以省略
+$ git pull origin next
+# 等同于
+$ git fetch origin
+$ git merge origin/next
+
+
+在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪关系(tracking)
+比如，在git clone的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系
+也就是说，本地的master分支自动”追踪”origin/master分支
+
+
+Git也允许手动建立追踪关系，指定master分支追踪origin/next分支
+$ git branch --set-upstream master origin/next
+
+
+如果当前分支与远程分支存在追踪关系
+$ git pull origin
+
+如果当前分支只有一个追踪分支
+$ git pull
+
+
+
+将本地分支的更新，推送到远程主机
+$ git push <远程主机名> <本地分支名>:<远程分支名>
+
+
+如果省略本地分支名，则表示删除指定的远程分支
+因为这等同于推送一个空的本地分支到远程分支
+$ git push origin :master
+# 等同于
+$ git push origin --delete master
+
+
+如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略
+$ git push origin
+
+
+如果当前分支只有一个追踪分支
+$ git push
+
+
+如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机
+这样后面就可以不加任何参数使用git push
+$ git push -u origin master
