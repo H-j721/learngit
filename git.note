@@ -1,8 +1,8 @@
 /*******************************************************
  * Author : JiangHe
  * Create time   : 2016-04-05 17:15:00
- * Last modified : 2016-04-05 20:33:18
- * Description   : 
+ * Last modified : 2016-04-05 21:42:01
+ * Description   : From michaelliao
 *********************************************************/
 Versions:
 HEAD
@@ -15,7 +15,7 @@ Commands:
 git init 
 git add <file>
 git commit [-m comments]
-git status
+git status [-s]
 git diff <file>
 git diff HEAD -- <file>
 git remote -v
@@ -93,5 +93,6 @@ git push origin <tagname>
 git push origin -- tags
 git push origin :refs/tags/<tagname>
 
+别名
 git config --global alias.st status
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
